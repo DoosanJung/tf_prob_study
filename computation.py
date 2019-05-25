@@ -1,5 +1,6 @@
 """
-https://www.tensorflow.org/probability/overview
+The code example are modified from below source to confirm my understanding.
+Source:https://github.com/tensorflow/probability/tree/master/tensorflow_probability/examples/jupyter_notebooks
 
 - lots of mathematical operations
 - efficient vectorized computation

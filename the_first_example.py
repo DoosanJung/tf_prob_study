@@ -1,5 +1,8 @@
 """
-The First example
+The code example are modified from below source to confirm my understanding.
+Source:https://github.com/tensorflow/probability/tree/master/tensorflow_probability/examples/jupyter_notebooks
+
+The First example.
 """
 import tensorflow as tf
 import tensorflow_probability as tfp
