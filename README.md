@@ -1,5 +1,5 @@
 # TensorFlow Probability Study
-[Overview](https://www.tensorflow.org/probability/overview)
+[Overview](https://www.tensorflow.org/probability/overview)  
 [API docs](https://www.tensorflow.org/probability/api_docs/python/tfp)
 
 TensorFlow Probability is a library for probabilistic reasoning and statistical analysis in TensorFlow.
