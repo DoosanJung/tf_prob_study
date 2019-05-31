@@ -9,16 +9,8 @@ Analyze the differences among group means in a sample.
 In its simplest form, ANOVA provides a statistical test of whether the population means of several groups 
 are equal, and therefore generalizes the t-test to more than two groups. 
 
-One-way ANOVA
-- completely randomized experiment with a single factor. 
-
-Two-way ANOVA
-- ANOVA generalizes to the study of the effects of multiple factors. 
-- When the experiment includes observations at all combinations of levels of each factor, it is termed factorial. 
-
 Source: https://en.wikipedia.org/wiki/Analysis_of_variance
 Source: https://web.stanford.edu/class/stats191/notebooks/Interactions.html
-Source: https://web.stanford.edu/class/stats191/notebooks/ANOVA.html
 """
 import statsmodels.api as sm
 from statsmodels.compat import urlopen
@@ -69,6 +61,22 @@ def fit_linear_model(formula, data, subset=None, show=False):
     For categorical variables; use C() operator
     Source: https://www.statsmodels.org/stable/example_formulas.html
 
+    If it is reasonable to assume that sigma^2 is constant for each observation.
+    Then, we can incorporate all observations into 1 model.
+    
+    Model:
+        S_i = β0 + β1*X_i + β2*E_i2 + β3*E_i3 + β4*M_i + ε_i where
+        E_i2 = 1 (where E_i = 2), 0 (o.w)
+        E_i3 = 1 (where E_i = 3), 0 (o.w)
+
+    Model with interactions:
+        (C(E) * X)
+        S_i = β0 + β1*X_i + β2*E_i2 + β3*E_i3 + β4*M_i 
+                +  β5*E_i2*X_i + β6*E_i3*X_i + ε_i
+
+        (C(E) * C(M))
+        S_i = β0 + β1*X_i + β2*E_i2 + β3*E_i3 + β4*M_i 
+                +  β5*E_i2*M_i + β6*E_i3*M_i + ε_i
     """
     res_lm = ols(formula, data, subset).fit()
     print(res_lm.summary())
