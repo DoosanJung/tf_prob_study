@@ -14,6 +14,51 @@ Depending on the properties of Σ
     - WLS   : weighted least squares for heteroskedastic errors diag(Σ)
     - GLS   : generalized least squares for arbitrary covariance Σ
     - GLSAR : feasible generalized least squares with autocorrelated AR(p) errors Σ=Σ(ρ)
+
+OUTPUT
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.416
+Model:                            OLS   Adj. R-squared:                  0.353
+Method:                 Least Squares   F-statistic:                     6.646
+Date:                Sat, 01 Jun 2019   Prob (F-statistic):            0.00157
+Time:                        04:17:06   Log-Likelihood:                -12.978
+No. Observations:                  32   AIC:                             33.96
+Df Residuals:                      28   BIC:                             39.82
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------
+x1             0.4639      0.162      2.864      0.008         0.132     0.796
+x2             0.0105      0.019      0.539      0.594        -0.029     0.050
+x3             0.3786      0.139      2.720      0.011         0.093     0.664
+const         -1.4980      0.524     -2.859      0.008        -2.571    -0.425
+==============================================================================
+Omnibus:                        0.176   Durbin-Watson:                   2.346
+Prob(Omnibus):                  0.916   Jarque-Bera (JB):                0.167
+Skew:                           0.141   Prob(JB):                        0.920
+Kurtosis:                       2.786   Cond. No.                         176.
+==============================================================================
+
+Both BIC and AIC attempt to resolve overfitting problem by introducing a penalty term 
+for the number of parameters in the model; the penalty term is larger in BIC than in AIC.
+
+Durbin-Watson   
+    - The null hypothesis of the test is that there is no serial correlation
+    - The test statistic is approximately equal to 2*(1-r) where r is the sample autocorrelation of the residuals 
+        Thus, for r == 0, indicating no serial correlation, the test statistic equals 2
+        This statistic will always be between 0 and 4
+        The closer to 0 the statistic, the more evidence for positive serial correlation
+        The closer to 4, the more evidence for negative serial correlation
+    - Source: https://www.statsmodels.org/stable/generated/statsmodels.stats.stattools.durbin_watson.html
+
+Jarque-Bera (JB)
+    - The null hypothesis of the test is that the data is normally distributed 
+    - A goodness-of-fit test of whether sample data have the skewness and kurtosis matching a normal distribution
+    - If it is far from zero, it signals the data do not have a normal distribution.
+    - Source: https://en.wikipedia.org/wiki/Jarque%E2%80%93Bera_test
+
 """
 import numpy as np
 import statsmodels.api as sm
